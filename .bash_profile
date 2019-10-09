@@ -1,0 +1,4 @@
+source ~/.gitrc
+source ~/.gorc
+
+

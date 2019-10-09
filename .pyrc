@@ -1,0 +1,5 @@
+source ~/.gitrc
+cd /Users/jonahjo/Documents/jonahjones777/eksphemeral/backend
+python3 -m venv .env
+source .env/bin/activate
+
