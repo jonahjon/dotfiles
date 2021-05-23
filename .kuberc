@@ -1,9 +1,10 @@
-function get_cluster_short() {
-  echo "$1" | cut -d : -f6
-}
-
-source ~/.gorc
-source ~/.gitrc
-export KUBE_PS1_CLUSTER_FUNCTION=get_cluster_short
-source "/usr/local/opt/kube-ps1/share/kube-ps1.sh"
-PS1='$(kube_ps1)':$PS1
+alias k='kubectl'
+alias kgp='kubectl get pods'
+alias kgd='kubectl get deployments'
+alias kgs='kubectl get services'
+alias kdp='kubectl describe pod'
+alias kl='kubectl logs'
+alias kgpa='kubectl get pods --all-namespaces'
+alias kgda='kubectl get deployments --all-namespaces'
+alias kgi='kubectl get ingress'
+alias kgc='kubectl get configmap'
