@@ -10,9 +10,22 @@ PS1='$(kube_ps1)'$PS1
 export KUBECTX_CURRENT_FGCOLOR=$(tput setaf 6)
 export PATH="$PATH:/Applications/Visual Studio Code.app/Contents/Resources/app/bin"
 export GOPROXY=direct
+[ -f ~/.kubectl_aliases ] && source ~/.kubectl_aliases
 
 # Path to your oh-my-zsh installation.
 export ZSH="/Users/jonahjo/.oh-my-zsh"
+
+export KUBECTX_CURRENT_FGCOLOR=$(tput setaf 6)
+
+export GOPROXY=direct
+export GOPATH=$HOME/go
+export PATH=$PATH:$GOPATH/bin
+export AWS_ACCOUNT=$(aws sts get-caller-identity --query Account --output text)
+alias docker-kill="docker rm -f $(docker ps -a -q)"
+alias hg="history | grep"
+
+alias pub-log="aws ecr-public get-login-password --region us-east-1 | HELM_EXPERIMENTAL_OCI=1 helm registry login --username AWS --password-stdin public.ecr.aws"
+alias priv-log="aws ecr get-login-password --region us-west-2 | HELM_EXPERIMENTAL_OCI=1 helm registry login --username AWS --password-stdin $AWS_ACCOUNT.dkr.ecr.us-west-2.amazonaws.com"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -86,6 +99,7 @@ aws
 )
 
 source $ZSH/oh-my-zsh.sh
+
 
 # User configuration
 
